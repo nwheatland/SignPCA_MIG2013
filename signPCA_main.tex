@@ -1,0 +1,95 @@
+%%% template.tex
+%%%
+%%% This LaTeX source document can be used as the basis for your technical
+%%% paper or abstract. Intentionally stripped of annotation, the parameters
+%%% and commands should be adjusted for your particular paper - title, 
+%%% author, article DOI, etc.
+%%% The accompanying ``template.annotated.tex'' provides copious annotation
+%%% for the commands and parameters found in the source document. (The code
+%%% is identical in ``template.tex'' and ``template.annotated.tex.'')
+
+\documentclass[review]{acmsiggraph}
+
+\TOGonlineid{45678}
+\TOGvolume{0}
+\TOGnumber{0}
+\TOGarticleDOI{1111111.2222222}
+\TOGprojectURL{}
+\TOGvideoURL{}
+\TOGdataURL{}
+\TOGcodeURL{}
+
+\title{The Title of Your Paper Goes Here}
+
+\author{Nkenge Wheatland \hspace{10 mm}  
+Sophie Joerg
+\hspace{10 mm} 
+Victor Zordan 
+\\UC Riverside
+\hspace{16 mm} Clemson University
+\hspace{16 mm} UC Riverside}
+%\thanks{e-mail:rsmith@gmail.com}
+\pdfauthor{}
+
+\keywords{radiosity, global illumination, constant time}
+
+\begin{document}
+
+%% \teaser{
+%%   \includegraphics[height=1.5in]{images/sampleteaser}
+%%   \caption{Spring Training 2009, Peoria, AZ.}
+%% }
+
+\maketitle
+
+\begin{abstract}
+
+
+\end{abstract}
+
+\begin{CRcatlist}
+  \CRcat{I.3.3}{Computer Graphics}{Three-Dimensional Graphics and Realism}{Display Algorithms}
+  \CRcat{I.3.7}{Computer Graphics}{Three-Dimensional Graphics and Realism}{Radiosity};
+\end{CRcatlist}
+
+\keywordlist
+
+\TOGlinkslist
+
+\copyrightspace
+
+\input{01_intro.tex}
+\input{02_relatedWork.tex}
+\input{03_overview.tex}
+\input{04_pcaRep.tex}
+\input{05_sparseMarkers.tex}
+\input{06_reconstruction.tex}
+\input{07_results.tex}
+\input{08_discussion.tex}
+\input{09_conclusion.tex}
+
+
+\iffalse
+\begin{equation}
+ \sum_{j=1}^{z} j = \frac{z(z+1)}{2}
+\end{equation}
+
+\begin{eqnarray}
+x & \ll & y_{1} + \cdots + y_{n} \\
+  & \leq & z
+\end{eqnarray}
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1.5in]{images/samplefigure}
+  \caption{Sample illustration.}
+\end{figure}
+\fi
+
+
+\section*{Acknowledgements}
+
+\bibliographystyle{acmsiggraph}
+\bibliography{signPCA}
+\end{document}

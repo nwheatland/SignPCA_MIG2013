@@ -1,0 +1,24 @@
+
+\section{Related work}
+
+The detailed and subtle motions of fingers are hard to capture. Many approaches have been suggested, each of them having their own advantages and disadvantages. Optical motion capture systems, while being very accurate, require substantial post-processing due to occlusions and mislabelings. CyberGloves \cite{Cyb13} require regular calibrations and do not provide the accuracy needed for our purpose \cite{KahZacKle04}. For image-based systems or systems using depth-data, the hand needs to be in a confined space and the body can not captured synchronously \cite{WanPop09,ZhaChaXu12}. 
+% the citation is about cyberglove 2, but I am citing cyberglove 3 previously
+
+Our work focuses on facilitating capturing hand and finger motions together with body motions in a motion capture system. To reach this goal, we investigate the most effective way to capture accurate hand motions using the smallest possible number of markers and an effective reconstruction method. Previous research analyzed finger motions to find correlations between different degrees of freedom. Rijpkema and Girard \shortcite{RijGir91} found that the relationship between the flexion of the distal and the proximal interphalangeal joint (DIP and PIP, respectively) is approximately linear with $DIP=2/3*PIP$. J\"{o}rg and O'Sullivan \shortcite{JoeOSu09} reduce the 50 degrees of freedom of both hands to 15 by eliminating irrelevant and redundant information. These approaches show that finger motions are highly redundant. We take advantage of the correlations between different degrees of freedom of the hand to optimize the capturing and animation of hand motions. 
+
+Principal component analysis (PCA), as a standard technique to analyze and reduce high-dimensional data, has also been used to study finger motions. In Braido and Zhang's study \shortcite{BraZha04}, the two first principal components of a PCA accounted for over 98\% of all variance in the joint angles. However, their motion database did not take into account the thumb and involved only two types of tasks - cylinder grasping and voluntary flexion of individual fingers - which were repeated by different participants. Santello et al. \shortcite{SanFlaSoe98} studied a variety of 57 grasp poses and found that over 80\% of the measured 15 degrees of freedom could be described by their first two principal components. Ciocarlie...
+However, all those studies apply to grasps that do not require specific motions from individual fingers. We present a method, which is optimized for American sign language (ASL), which exhibits an impressive dexterity and variety of finger motions. We hypothesize that there is less redundancy in typical finger motions of ASL than in standard grasping motions. 
+
+One of our goals is to determine which is the most effective set of markers for capturing hand motions. Previous work has optimized marker sets for hand motions by choosing markers sets manually and a reconstructing the motions with inverse kinematics \cite{HoyRyaOSu11} or with a brute-force approach that compares the error of similar poses found in a database \cite{KanWheZor13}. 
+In a similar manner, but for the full body, Chai and Hodgins, 
+
+
+%Hoyet...: They find that for many cases a simple 8 marker hand model - one on each fingertip, three of the bases of the thumb, index, and little finger, produces good results. 
+%Kang et al. : the best set of six markers includes the fingertips of the index, middle, ring finger as well as three markers on or near the thumb. 
+Sign language: ...
+Hand low-res: KanWheZor12c, CioGolAll07, ChaPolXin07
+
+Correlations between body and finger motions, in case we manage to include data on the body: MajZorFal06, JoeHodSaf12
+
+Body low-res?: SafHodPol04
+Perception?: JoeHodOSu10

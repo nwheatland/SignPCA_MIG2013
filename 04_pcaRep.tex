@@ -1,0 +1,42 @@
+\section{PCA representation for hands}
+
+At the core of our technique is the assumption that hand motion is
+relatively low-dimensional.  Even though a full resolution skeleton
+of the hand can have upwards for one hundred degrees of freedom (DOF),
+many of the DOFs of the hand are dependent \cite{SanFlaSoe98,BraZha04,JoeOSu09}. In our approach, we exploit
+this low-dimensional assumption through PCA, anticipating that PCA
+will hold the bulk of the important features of the whole-body hand
+motion in a relatively small number of principle components.  We
+support this primary assumption by showing that joint angles alone
+are not capable of producing... 
+
+We experimented with two ways to construct 
+the joint angles from the 
+marker database.
+Principle component analysis (PCA) is performed 
+over the joint angles, giving us a joint to principle component 
+representation with 54 components (3 for each Euler angle) 
+for every sample of motion in the database.  
+%
+PCA is performed on the marker positions of the 
+database, giving us 39 components (3 for each XYZ position) for every 
+sample in the database. PCA identifies the most important information 
+in this database by making it the first component. Each subsequent 
+component is less valuable than its predecessor. Using this knowledge, 
+we sum up the values of each component over all of the samples and 
+weigh each sum based on importance (which component). Each weighted 
+sum correlates with a marker, and the markers are then ordered in terms 
+of importance by their weighted sum. The chosen marker set is then 
+used for the data we wish to reconstruct. \\
+
+To reconstruct a sequence of motion, we first only use data from the 
+marker set selected in the previous step. This is the equivalent of 
+having our performer only wear these markers in the initial capture 
+session. These marker position are plugged into our regression model 
+to determine the full motion of our low dimensional sequence in 
+principle component space. \\
+
+Joint angles for the low dimensional motion is then reconstructed 
+by reversing the PCA process on the principle components produced by 
+the regression. The joint angles are then fed back into the mapping 
+program to animate the hand.

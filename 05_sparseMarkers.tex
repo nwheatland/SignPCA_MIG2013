@@ -1,0 +1,25 @@
+
+\section{Sparse Marker Selection}
+
+ based on the respective marker's 
+contribution to the PCA reconstruction based on the reference database.
+
+
+To complete the first phase, we collect full-resolution motion capture 
+data of hand in a small capture region. 
+Specifically, our actor wears 13 small
+(approx. 6mm) markers directly on the hands as well as three larger 
+markers on the lower forearm. 
+The lower forearm acts as the root of our hand. Some of the recorded 
+captures act as our database. Our database contains two versions of the 
+alphabet signed by the same person and has 6750 frames. The other 
+captures are used as input to our system to be fully reconstructed. \\
+
+All of the markers in our captures are labeled in Vicon Blade and 
+read into a program that maps the marker data to a hand model. As 
+this mapping occurs, certain information is extracted from the program. 
+These include joint angles for all of the joints in the model hand (18) 
+over every frame and the location of each marker. Joint angles are 
+represented as Euler angles. Marker positions for every capture are 
+put into the same coordinate frame by determining the offset of each 
+marker from the root body (forearm). \\

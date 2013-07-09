@@ -1,0 +1,42 @@
+
+\section{Discussion}
+
+When performing the regression we map marker positions to a
+certain number of components. We experimented with a smaller 
+number of components would produce a better
+reconstruction of the joint angle data. We found that mapping
+to the full amount of components (54) produces the smallest
+average error,
+we can map up to 35 components with very little degradation
+from a full component set.\\
+
+%Because mapping to a full set of components produces the smallest
+%average error, 
+We also tested using our locally-weighted
+regression model to map marker positions directly to joint angles
+represented as Euler angles. The average joint angle error per
+frame was very high. This can easily be seen in the animations
+produced by the reconstructed joint angles. The hand does not
+reach the majority of the poses in the motion. From this we see
+that there is a clear benefit to using and producing principle
+components to reconstruct the joint angles of the hand over 
+mapping directly to joint angles.\\
+
+We also experimented with
+ three has a larger average error than the marker
+set of six, but still appears to produce reasonable results. We
+can see this when looking at the top principle components of the
+reconstructed motion and comparing it to the top principle 
+components of the original motion. For one sequence of motion,
+(in Figure BLAH), the top three components for both the original
+motion and the reconstructed motion with 3 markers appear to follow
+very similar patterns. Although there is information lost in the
+reconstruction, the general pattern of motion is the same.\\
+
+Lastly, we attempt to reconstruct motions that are not sign language
+using our alphabet database. The motions include counting and general
+gesticulations. While the general poses in the 
+sequences appear to be reached, the accuracy of the joint angles
+is visibly not as good the sign language reconstructions. It
+may be necessary to have a different database to properly reconstruct
+these motions.\\
