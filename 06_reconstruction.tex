@@ -1,23 +1,32 @@
 
 \section{Reconstruction}
 
-
 A small number of markers alone cannot produce a fully
-realized signing hand animation. To compensate for the 
-information loss, we build a regression model 
-to construct joint angle measurements for every joint over 
-every frame. 
-Using PCA, we can also construct an optimal marker set to represent our 
-low dimensional data. 
+realized hand animation. Therefore, we build a regression model 
+to construct joint angle measurements for a full motion sequence.
+Our LWR model maps marker positions in our reference database
+to joint angles of our database represented in principle
+component space.
+
+For this step, we introduce an input motion sequence
+that uses the sparse marker set. The input data is 
+plugged into the regression model to predict the best
+joint angle components to be used for final reconstruction.
+Reconstruction is completed when PCA process described in 
+Section 4 is reversed, using the newly predicted components
+as input. The result is a full set of joint angles for the
+input motion sequence.
+
 
 %We test our method on a variety sign language 
 %sequences. 
 
-We determine the quality of these animations
-by comparing the reconstructed joint angles to ground truth
-original data. Our method also employs the principle
-component analysis (PCA), and we can access quality by 
-comparing the components of the reconstructed joint angles
-to the componenets of original joint angles.
+%RESULTS?
+% We determine the quality of these animations
+% by comparing the reconstructed joint angles to ground truth
+% original data. Our method also employs the principle
+% component analysis (PCA), and we can access quality by 
+% comparing the components of the reconstructed joint angles
+% to the components of original joint angles.
 
 
