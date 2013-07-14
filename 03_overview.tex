@@ -1,15 +1,34 @@
 
 \section{Overview}
+
 Our overall technique is divided into two stages: 1) the computation  
 of the sparse marker dataset; and 2) reconstruction from the sparse 
 marker set to full-resultion, skeleton-driven hand animation.
-%The  system reconstructs hand motion sequences from low 
-%dimensional data. The initial data has a small number of markers that, 
-%on their own, would not be able to fully convey sign language poses 
-%and sequences. High quality animations are created by mapping our low 
-%dimensional data to a series of joint angles described in 
-%principle component space. \\
+To start, we collect full-resolution motion capture 
+data of hand in a small capture region. 
+Specifically, our actor wears 13 small
+(approx. 6mm) markers directly on the hands as well as three  
+markers on the lower forearm. 
+The lower forearm acts as the root link for our hand skeleton with the
+assumption that these same three markers will appear in full-body captures. 
+%The recorded captures act as our database. 
+To account for gross body hand motion, marker positions in the database are put into the same coordinate
+frame by computing the transformation of each marker relative to  
+the root link.
 
-We then set up a locally 
-weighted regression model to map the marker positions to joint angles 
-in principle component space. \\
+To complete the first phase, we employ the reference data and perform PCA over the markers and 
+derive a rank ordering for the markers based on their influences over
+the principle components.   From this rank-ordered list, we can easily
+select the top markers to act as our sparse marker set.
+%
+For the second phase, reconstruction, we set up a locally weighted regression 
+(LWR) model to map from the sparse marker positions to a set of derived principle
+components.  In this case, we conduct the PCA from the joint angles.  The LWR model is built
+for each test query based on the input markers for the query sample and their proximity to 
+the analogous markers in the reference data after correcting for lower arm movement.
+%
+Joint angles for the low dimensional input is then reconstructed 
+by reversing the PCA process, from the principle components produced by 
+the regression back to a full set of joint angles. 
+%The joint angles are then fed back into the mapping 
+%program to animate the hand.
