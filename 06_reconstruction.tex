@@ -1,17 +1,10 @@
 
 \section{Reconstruction}
 
-The reconstruction process takes as input a recorded sequence from
- the sparse marker set.  It then produces joint angle trajectories
-that estimate the full hand motion.  
+The reconstruction process takes as input a recorded sequence from the sparse marker set.  It then produces joint angle trajectories that estimate the full hand motion.  
 %A small number of markers alone cannot produce a fully
 %realized hand animation. Therefore, 
-To this end, we build a regression model 
-to construct joint angle measurements for a full motion sequence.
-Specifically, our LWR model maps marker positions in the recorded 
-sequence to principle components.  Subsequently, the principle components 
-are converted into joint angles using the covariance matrix
-from the PCA to produce the final motion.
+To this end, we build a regression model to construct joint angle measurements for a full motion sequence. Specifically, our locally weighted regression (LWR) model maps marker positions in the recorded sequence to principle components. Subsequently, the principle components are converted into joint angles using the covariance matrix from the PCA to produce the final motion.
 
 The LWR model is built for each individual sample, or query, taken from the
 recorded sequence.  Through this process,
