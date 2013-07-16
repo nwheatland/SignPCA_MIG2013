@@ -1,17 +1,19 @@
 
 \section{Overview}
 
-Our overall technique is divided into two stages: 1) the computation of the sparse marker dataset; and 2) the reconstruction of the full-resultion, skeleton-driven hand animation from the sparse marker set. 
-For our study, we collect of full-resolution motion capture data of hand motions in a small capture area. Our database consists of a total of XXX seconds of American sign language as well as XXX %(a couple of other motions)
-Part of that database is a XXX long sequence consisting of two repetitions of the American sign language alphabet at 120fps (6570 frames) that we use as reference data for our first stage. 
+Our overall technique is divided into two stages: 1) the computation of the sparse marker set; and 2) the reconstruction of the full-resolution, skeleton-driven hand animation from the sparse marker set. 
+For our study, we collect of full-resolution motion capture data of hand motions in a small capture area. 
+%Our database consists of a total of XXX seconds of American sign language as well as XXX %(a couple of other motions)
+%Part of that database is a XXX long sequence consisting of two repetitions of the American sign language alphabet at 120fps (6570 frames) that we use as reference data for our first stage. 
  % are those different versions (different finger poses) or just two repetitions of the ASL alphabet?  
-Our actor wears 13 small (approx. 6mm) markers directly on the hands as well as three markers on the lower forearm. The lower forearm acts as the root link for our hand skeleton with the assumption that these same three markers will appear in full-body captures. 
+The actor wears 13 small (6mm) markers directly on the hands as well as three markers on the lower forearm. The lower forearm acts as the root link for our hand skeleton with the assumption that these same three markers will appear in full-body captures. 
 %The recorded captures act as our database. 
 To account for gross body hand motion, marker positions in the database are put into the same coordinate frame by computing the transformation of each marker relative to the root link. Our hand model consists of 18 joints. %describe or include a figure, how are the 18 joints computed based on 13 markers?
+For the results in this paper, we construct two such databases, one for sign language and the other freehand gesture data.
 
-In the first phase, we employ the reference data and perform PCA over the markers and derive a rank ordering for the markers based on their influences over the principle components. From this rank-ordered list, we select the top markers to act as our sparse marker set.
-For the second phase, reconstruction, we set up a locally weighted regression (LWR) model to map from the sparse marker positions to a set of derived principle components.  In this case, PCA is applied to the joint angles. The LWR model is built for each test query based on the input markers for the query sample and their proximity to the analogous markers in the reference data after correcting for lower arm movement.
+In the first phase, we employ the reference data and perform PCA over the markers to derive a rank ordering for the markers based on their influences over the principle components. From this rank-ordered list, we select the top markers to act as our sparse marker set.
+For the second phase, reconstruction, we set up a locally weighted regression (LWR) model to map from the sparse marker positions to a set of derived principle components.  In this case, PCA is applied to the joint angles. The LWR model is built for each test query based on the input markers for the query and their proximity to the analogous markers in the reference data after correcting for the lower arm (root) movement.
 %
-Joint angles for the low dimensional input are then reconstructed by reversing the PCA process, from the principle components produced by the regression back to a full set of joint angles. 
+Joint angles for the low dimensional input are then reconstructed by reversing the PCA process, from the principle components compued by the regression to a full set of joint angles. 
 %The joint angles are then fed back into the mapping 
 %program to animate the hand.

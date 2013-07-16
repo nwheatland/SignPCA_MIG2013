@@ -1,7 +1,7 @@
 
 \section{Reconstruction}
 
-The reconstruction process takes as input a recorded sequence from the sparse marker set.  It then produces joint angle trajectories that estimate the full hand motion.  
+The reconstruction process takes as input a recorded sequence of the sparse marker set.  It produces joint angle trajectories that estimate the full hand motion.  
 %A small number of markers alone cannot produce a fully
 %realized hand animation. Therefore, 
 To this end, we build a regression model to construct joint angle measurements for a full motion sequence. Specifically, our locally weighted regression (LWR) model maps marker positions in the recorded sequence to principle components. Subsequently, the principle components are converted into joint angles using the covariance matrix from the PCA to produce the final motion.
@@ -9,31 +9,32 @@ To this end, we build a regression model to construct joint angle measurements f
 The LWR model is built for each individual sample, or query, taken from the
 recorded sequence.  Through this process,
 each instance in the database is weighted and this weighting is used
-to bias the model.  The weighting is computed simply as the inverse
+to bias the model.  The weighting is computed as the inverse
 of the Euclidean distance from the (root-link corrected) marker positions 
 between the query and the samples in the database.  The result
 is a regression that places importance on the reference samples
-that are close to the test query while also down-weighting the
-the influence of reference samples which are more distant
-from the query.  For further discussion on this topic, we
-refer interested readers to similar efforts with whole-body work~\cite{}.
+that are close to the test query, while also down-weighting the
+the influence of reference samples which are distant
+from the query.  
+%For further discussion on this topic, we
+%refer interested readers to similar efforts with whole-body work~\cite{}.
 
-At run-time, we introduce an input query sequence
+At run-time, we introduce an input sequence
 recorded from the sparse marker set. The input data is 
 put through the regression modeling step to predict the principle components.
 To ensure smoothness, the trajectories of the principle components
 are filtered before they are converted into joint angles.  In our results, 
-we use a cone filter with a size of seventeen, with our sample rate for
-the motion recordings set at $120~hz$.  
+we use a cone filter with a size of seventeen (with our sample rate for
+the motion recordings set at $120~hz$.)
 
 We also experimented with
 filtering the joint angles to produce smoothness, but found more visually 
 appealing results when we filtered the principle components.  Our 
 assumption for this finding is that the principle components combine
-to produce more ``crisp'' poses even when they are filtered while
+to produce more ``crisp'' motion even when they are filtered, while
 the joint angle filtering dilutes the unique features of individual
 poses over time.  Further study of this phenomena is likely to 
-produce interesting findings.
+reveal some interesting findings.
 
 
 %Reconstruction is completed when PCA process described in 
