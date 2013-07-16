@@ -1,4 +1,8 @@
-
-
 \section{Conclusion}
+
+In this work, we present a method to capture subtle hand motions with a sparse marker set consisting of three to six markers. Our method first specifies an appropriate set of markers using principle component analysis to exploit the redundancies and irrelevancies present in hand motion data. It then reconstructs the full hand motion based on the sparse marker set with a locally weighted regression mapping marker positions to principle components. 
+
+We show that our technique can reconstruct complex finger motions based on only three markers and outperforms methods presented by Hoyet et. al \shortcite{HoyRyaOSu11} and Kang et. al \shortcite{KanWheZor12} in recent years. Our findings also indicate that using a regression mapping marker positions to principle components leads to better results for reconstruction of the full hand motion than using a regression mapping marker positions directly to joint angles. 
+
+The main limitation of our work is that the selection of the markers to capture is not readily applicable to other types of hand motions and the first step of our method -- computing an efficient sparse set of markers based on a database of hand motion -- has to be performed for every type of hand motions. Future work will explore what sparse marker sets would be most valuable for other types of hand motions such as grasping motions or gestures accompanying speech and thus investigate how far our approach generalizes to different types of hand motion databases.
 
