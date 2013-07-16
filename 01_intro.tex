@@ -1,10 +1,30 @@
 
-
 \section{Introduction}
 
-Producing quality whole-body motion involves the movement of the hand in relation to the rest of the body. However, using a motion capture system, it can be difficult to record the full body of a moving person while also capturing the hand and all of its detail because the whole-body and hand appear at largely different scales.  While it is possible to record a high-resolution capture of the hand through a comprehensive set of markers (typically 13-20 markers), this is often only possible in a small capture region, isolating the motion of the hand.  However, in a larger, full-body capture region, the complete set of markers becomes difficult to discern, and so this approach is usually abandoned in lieu of the capture of a smaller set of markers (2-6 markers) coupled with a ``hand-over'' process for reconstructing the full hand animation~\cite{KanWheZor12}.  In this paper, we propose a robust technique to accomplish the latter that both automatically selects the marker set to record, and subsequently produces joint trajectories for a full skeleton from the marker set.  
+Producing quality whole-body motion involves the movement of the hand in relation to the rest of the
+body. However, using a motion capture system, it can be difficult to record the full body of a
+moving person while also capturing the hand and all of its detail because the whole-body and hand
+appear at largely different scales.  While it is possible to record a high-resolution capture of the
+hand through a comprehensive set of markers (typically 13-20 markers), this is often only possible
+in a small capture region, isolating the motion of the hand.  However, in a larger, full-body
+capture region, the complete set of markers becomes difficult to discern, and so this approach is
+usually abandoned in lieu of the capture of a smaller set of markers (2-6 markers) coupled with a
+``hand-over'' process for reconstructing the full hand animation~\cite{KanWheZor12}.  In this paper,
+we propose a robust technique to accomplish the latter that both automatically selects the marker
+set to record, and subsequently produces joint trajectories for a full skeleton from the marker set.
+ 
 
-Our technique employs a combination of principle component analysis (PCA)~\cite{bishopPCA} to construct a low-dimensional representation of the hand data along with linearly weighted regression (LWR) to aid in the reconstruction.  Starting from a reference database that is recorded using a full-resolution marker set, we first determine the best \emph{sparse} marker set to record based on a PCA representation of this data.  We experiment with different test sizes for the marker set to record, specifically reduced marker sets of six and three markers, and we compare our selection method with different ones proposed for selecting the markers, including manual selection, following~\cite{HoyRyaOSu11}, and a method that uses representative cluster-based search for selection~\cite{KanWheZor12}. In contrast, the technique in this paper computes the marker set directly from the PCA, and our findings show that this marker set is superior to the other methods of selection for the reconstruction techniques we tested.
+Our technique employs a combination of principle component analysis (PCA)~\cite{bishopPCA} to
+construct a low-dimensional representation of the hand data along with linearly weighted regression
+(LWR) to aid in the reconstruction.  Starting from a reference database that is recorded using a
+full-resolution marker set, we first determine the best \emph{sparse} marker set to record based on
+a PCA representation of this data.  We experiment with different test sizes for the marker set to
+record, specifically reduced marker sets of six and three markers, and we compare our selection
+method with different ones proposed for selecting the markers, including manual selection,
+following~\cite{HoyRyaOSu11}, and a method that uses representative cluster-based search for
+selection~\cite{KanWheZor12}. In contrast, the technique in this paper computes the marker set
+directly from the PCA, and our findings show that this marker set is superior to the other methods
+of selection for the reconstruction techniques we tested.
 For reconstruction, our proposed method employs a second PCA in a synthesis step combined with LWR.  
 Starting from a test query that records only the sparse marker set, 
 we use LWR to build a locally sensitive model between the markers and the principle components.  These
@@ -16,14 +36,18 @@ set of configuration poses for the hands.   We show that we can construct new (u
 high-visual quality using a relatively simple, generic ASL database.  Generalization of the database
 reveals that we can use our technique to capture other motions, such as counting, even though they
 are not closely related to the original motion.  However, this database reveals itself to be too specialized
-for subtler freehand motion, such as figurative gestures.  Instead, when a more closely related gesture reference database appears, novel gesture animation quality improves drastically.   
+for subtler freehand motion, such as figurative gestures.  Instead, when a more closely related
+gesture reference database appears, novel gesture animation quality improves drastically.   
 
-Our effort holds close 
-similarities to previous work, especially the full-body motion control of~\cite{Chai05}.  In contrast, our main contributions include the distinct exploration of rich hand data, such as ASL, as well as our method for determining the best reduced marker set to take advantage of the power of dimensionality
+Our effort holds close similarities to previous work, especially the full-body motion control
+of~\cite{Chai05}.  In contrast, our main contributions include the distinct exploration of rich hand
+data, such as ASL, as well as our method for determining the best reduced marker set to take
+advantage of the power of dimensionality
 reduction realized by PCA.  Further, our approach is far simpler and lends itself to ease-of-use and
 re-implementation.
 Our approach also has notable advantages over other related papers for hand-over animation,
-such as~\cite{Hoyet,KanWheZor12} in that we compute the best reduced marker set directly, rather than selecting it manually, or through brute-force search.
+such as~\cite{HoyRyaOSu11,KanWheZor12} in that we compute the best reduced marker set directly,
+rather than selecting it manually, or through brute-force search.
 Compared to all of these techniques, our technique is both simple to implement and fast to compute,
 striking a valuable compromise which is likely to lead to greater adoption for commercial use.
 
