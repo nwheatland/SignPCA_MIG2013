@@ -19,7 +19,7 @@
 \TOGdataURL{}
 \TOGcodeURL{}
 
-\title{The Title of Your Paper Goes Here}
+\title{Automatic Hand-Over Animation using Principle Component Analysis}
 
 \author{Nkenge Wheatland \hspace{10 mm}  
 Sophie J\"{o}rg
@@ -43,6 +43,20 @@ Victor Zordan
 \maketitle
 
 \begin{abstract}
+This paper introduces a method for producing high quality hand motion using a
+small number of markers. The proposed ``hand-over'' animation technique constructs
+joint angle trajectories for the hand with the help of a full-resolution reference database. 
+Utilizing principle component analysis (PCA) applied to the database, the system automatically
+determines the sparse marker set to record. Further, to produce the hand animation,
+PCA is used along with a locally weighted regression model to reconstruct joint angles.   
+The resulting animation is a full-resolution hand which reflects the original motion without
+the need for capturing the full-resolution marker set.  
+Comparing the technique to other
+methods reveals improvement over the state of the art in terms of the marker set selection.
+In addition, the results highlight the ability to generalize the motion synthesized, both
+by extending the use of a single reference database to new motions, and from distinct 
+reference datasets, over a variety of freehand motions.
+
 
 
 \end{abstract}
@@ -88,7 +102,7 @@ x & \ll & y_{1} + \cdots + y_{n} \\
 \fi
 
 
-\section*{Acknowledgements}
+%\section*{Acknowledgements}
 
 \bibliographystyle{acmsiggraph}
 \bibliography{signPCA}
