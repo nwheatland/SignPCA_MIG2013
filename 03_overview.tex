@@ -2,7 +2,8 @@
 \section{Overview}
 
 Our overall technique is divided into two stages: 1) the computation of the sparse marker set; and 2) the reconstruction of the full-resolution, skeleton-driven hand animation from the sparse marker set. 
-For our study, we collect of full-resolution motion capture data of hand motions in a small capture area. 
+For our study, we collect full-resolution motion capture data of hand motions in a small capture
+area. 
 %Our database consists of a total of XXX seconds of American sign language as well as XXX %(a couple of other motions)
 %Part of that database is a XXX long sequence consisting of two repetitions of the American sign language alphabet at 120fps (6570 frames) that we use as reference data for our first stage. 
  % are those different versions (different finger poses) or just two repetitions of the ASL alphabet?  
@@ -14,6 +15,7 @@ For the results in this paper, we construct two such databases, one for sign lan
 In the first phase, we employ the reference data and perform PCA over the markers to derive a rank ordering for the markers based on their influences over the principle components. From this rank-ordered list, we select the top markers to act as our sparse marker set.
 For the second phase, reconstruction, we set up a locally weighted regression (LWR) model to map from the sparse marker positions to a set of derived principle components.  In this case, PCA is applied to the joint angles. The LWR model is built for each test query based on the input markers for the query and their proximity to the analogous markers in the reference data after correcting for the lower arm (root) movement.
 %
-Joint angles for the low dimensional input are then reconstructed by reversing the PCA process, from the principle components compued by the regression to a full set of joint angles. 
+Joint angles for the low dimensional input are then reconstructed by reversing the PCA process from
+the principle components computed by the regression to a full set of joint angles. 
 %The joint angles are then fed back into the mapping 
 %program to animate the hand.
