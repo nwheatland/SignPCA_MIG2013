@@ -1,0 +1,59 @@
+
+\section{Sparse Marker Selection}
+Our method for constructing the sparse marker set exploits the full recordings
+that appear in the reference database.  That is, because these recordings 
+include a full suite of markers, we can evaluate the value of each marker
+in contributing to the whole-hand motion.  A similar approach is described
+by Kang et al~\cite{Kang12} but our technique utilizes PCA to compute the markers
+directly, as opposed to the exhaustive search proposed by Kang and his
+colleagues..
+
+In particular, we conduct PCA over the reference database and, in this case,
+PCA is performed with the Cartesian positions of the markers relative
+to the root link.  With 13 markers, this leads to a PCA of 39 dimensions.  
+In general, PCA produces a covariance matrix and the eigenvectors of this matrix 
+create a list of components ordered from most important
+to least important.  
+%
+Each component has 39 coefficients that dictate the influence of each 
+marker on that component.  By adding up the contribution of each marker
+to all of the components, we can rank-order the influence of the markers on the
+full-set of components.  Further, from the eigenvalues, we are given the relative importance
+of each principle component with respect to each other.  We can use this importance
+as a weighting to bias the components.  Thus, by summing the weighted contribution
+of each marker to each of the components, our marker rank ordering can account
+for the described bias.
+
+%The marker coeffients are weighted depending 
+%on how much the current component contributes to the final PCA reconstruction
+%of the database and then summed. Markers with the highest sums are selected to
+%be the sparse marker set.
+
+In our results we highlight sparse marker sets of three 
+and six markers.
+Given the number of markers desired for the sparse set, we select the
+set simply as the top markers based the rank-ordering.  We experimented with two methods of
+producing this rank-ordering, one with the eigenvalues acting as a weighting bias
+and the second treating all of the top-$N$ principle components as equally important and simply
+ignoring the remaining components.  Conservatively experimenting with $N$ to be 
+between one fourth and three fourths of the full dimensionality, these two approaches 
+produced similar results.   However, if we selected $N$ to be the value of the full dimensionality,
+we did see reduced quality solutions.  In practice, we employ the eigenvalue weighted ranking for
+all results showcased in this paper.  
+
+A nice feature of selecting the marker set in this fashion is that the rank-ordering
+simply adds subsequent markers from smaller sets to produce the larger sets.  Thus, the described 
+priority ranking reveals which are the definitively \emph{most} influential markers regardless of the
+size of the sparse marker set. And so, in practice, adding more
+markers for higher quality recordings does not require a complete change of markers, only the
+addition of the desired number of markers to the ones employed in the lower quality recording.
+
+
+%upon the respective marker's contribution to the PCA 
+%reconstruction of the reference database.
+
+
+
+
+
+
